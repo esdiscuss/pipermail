@@ -36,3 +36,7 @@ I've shortened the bodies and renamed the e-mails but other than that it's the f
 You should also note that the file would end with a blank line.
 
 If you are piping with a command line app, you must set `progress` to false`.  If you have unlimited bandwidth but tightly constrained file space you may want to set `cache` to false.
+
+## License
+
+MIT
