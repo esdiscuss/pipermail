@@ -1,0 +1,42 @@
+Hi Ohad,
+
+Le 05/04/2013 12:00, Assulin, Ohad a écrit :
+>
+> Quick question, I would love to submit a feature proposal for 
+> ECMAScript 7 (Function Annotation)
+>
+> What is the exact process?
+>
+People usually just write their proposal in a post to es-discuss or as a 
+gist [1] in markdown format and post the link to es-discuss. But use 
+whatever is most convenient to you as long as it's easy to read for 
+everyone. Some proposals start in the wiki [2], but only members of TC39 
+have write access to it.
+As far as a "formal" process up to the spec, the proposal will be 
+discussed by TC39 at one or several meetings (one every 2 months) and 
+formal decisions of acceptance are decided there. In the vast majority 
+of cases, a lot of discussion happens before these meetings on 
+es-discuss (and after based on the meeting notes).
+
+> Is there any template I can use?
+>
+I don't think so. You can read pages on the wiki (accepted proposals 
+[3]) to see how they are usually structured, but I think it's more a 
+convention.
+As far as content is concerned, I recommend explaining use cases, 
+explaining how the feature is a significant improvement, explore related 
+work. For function annotations, I imagine some folks have already done 
+such work with custom comment grammar and it'd be nice to see what 
+people came up with, hopefully what error they made so the built-in 
+feature doesn't reproduce the same errors, etc.
+
+Hope that helps,
+
+David
+
+[1] https://gist.github.com/
+[2] http://wiki.ecmascript.org/doku.php
+[3] http://wiki.ecmascript.org/doku.php?id=harmony:proposals
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <http://mail.mozilla.org/pipermail/es-discuss/attachments/20130405/6c8a49dc/attachment.html>
