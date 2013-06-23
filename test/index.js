@@ -37,7 +37,7 @@ describe('pipermail.readMonth', function () {
 
 var message = Q.denodeify(pipermail.readMessage)('https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html')
 describe('pipermail.readMessage', function () {
-  it('parses a message to return an object representing teh message', function (done) {
+  it('parses a message to return an object representing the message', function (done) {
     this.slow(4000)
     this.timeout(8000)
     message.nodeify(function (err, res) {
@@ -53,5 +53,68 @@ describe('pipermail.readMessage', function () {
       assert.equal(JSON.stringify(res.body), JSON.stringify(fs.readFileSync(__dirname + '/fixture.txt', 'utf8').replace(/\r\n/g, '\n')))
       done()
     })
+  })
+})
+
+var fromStream = require('../lib/download-html-to-stream')
+var indexPath
+var monthPathA
+var monthPathB
+var messagePaths = []
+var messages = [{}, {}, {}, {}]
+fromStream.readIndex = function (path, callback) {
+  indexPath = path
+  setTimeout(function () {
+    callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-June',
+                    'https://mail.mozilla.org/pipermail/es-discuss/2011-July'])
+  }, 100)
+}
+fromStream.readMonth = function (path, callback) {
+  if (monthPathA) monthPathB = path
+  else monthPathA = path
+  setTimeout(function () {
+    if (path === 'https://mail.mozilla.org/pipermail/es-discuss/2011-June') {
+      callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
+                      'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html'])
+    } else {
+      callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
+                      'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'])
+    }
+  }, 100)
+}
+var n = 0
+fromStream.readMessage = function (path, callback) {
+  messagePaths.push(path)
+  setTimeout(function () {
+    callback(null, messages[n++])
+  }, 100)
+}
+var streamError
+var stream = pipermail('https://mail.mozilla.org/pipermail/es-discuss/')
+stream.on('error', function (e) { streamError = e})
+describe('pipermail', function () {
+  it('returns a parsed stream of all messages', function (done) {
+    this.slow(4000)
+    this.timeout(8000)
+    var i = 0
+    if (streamError) return done(streamError)
+    stream
+      .on('error', done)
+      .on('data', function (message) {
+        assert(messagePaths[i] === [
+          'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
+          'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html',
+          'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
+           'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'][i])
+        assert(message = messages[i++])
+      })
+      .on('end', function () {
+        assert(indexPath === 'https://mail.mozilla.org/pipermail/es-discuss/')
+        assert(monthPathA === 'https://mail.mozilla.org/pipermail/es-discuss/2011-June')
+        assert(monthPathB === 'https://mail.mozilla.org/pipermail/es-discuss/2011-July')
+        assert(messagePaths.length === 4)
+        assert(i === 4)
+        done()
+      })
   })
 })
