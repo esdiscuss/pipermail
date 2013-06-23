@@ -1,6 +1,6 @@
 {
   "name": "pipermail",
-  "version": "1.2.3",
+  "version": "2.0.0",
   "description": "node.js utilities for reading pipermail archives such as es-discuss",
   "main": "index.js",
   "dependencies": {

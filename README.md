@@ -29,7 +29,7 @@ stringified.pipe(require('zlib').createGzip())
 The resulting `res.txt` would look something like:
 
 ```javascript
-{"url":"https://mail.mozilla.org/pipermail/es-discuss/2006-June/003436.html",header":{"from":{"email":"baz@example.com","name":"Brendan Eich"},"date":"Sat, 3 Jun 2006 12:35:18 -0700","subject":"Welcome to the ECMAScript Edition 4 discussion list"},"body":"Thanks to Graydon Hoare for setting it up.\n\n/be"}
+{"url":"https://mail.mozilla.org/pipermail/es-discuss/2006-June/003436.html","header":{"from":{"email":"baz@example.com","name":"Brendan Eich"},"date":"Sat, 3 Jun 2006 12:35:18 -0700","subject":"Welcome to the ECMAScript Edition 4 discussion list"},"body":"Thanks to Graydon Hoare for setting it up.\n\n/be"}
 {"url":"https://mail.mozilla.org/pipermail/es-discuss/2006-June/003436.html","header":{"from":{"email":"bar@example.com","name":"Olav Junker Kjær"},"date":"Tue, 06 Jun 2006 15:40:48 +0200","subject":"ES4 translator"},"body":"Hello,\nI'm very pleased to s the new public specs for ES4"}
 {"url":"https://mail.mozilla.org/pipermail/es-discuss/2006-June/003437.html","header":{"from":{"email":"foo@example.com","name":"Robert Sayre"},"date":"Wed, 7 Jun 2006 11:43:37 -0400","subject":"date literals"},"body":"I think the date literal should allow a trailing 'Z' to substitute for\n'+00:00'.\n\nRobert Sayre"}
 ```
