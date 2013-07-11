@@ -36,6 +36,7 @@ describe('pipermail.readMonth', function () {
 })
 
 var message = Q.denodeify(pipermail.readMessage)('https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html')
+var message2 = Q.denodeify(pipermail.readMessage)('https://mail.mozilla.org/pipermail/es-discuss/2008-October/007920.html')
 describe('pipermail.readMessage', function () {
   it('parses a message to return an object representing the message', function (done) {
     this.slow(4000)
@@ -53,6 +54,11 @@ describe('pipermail.readMessage', function () {
       assert.equal(JSON.stringify(res.body), JSON.stringify(fs.readFileSync(__dirname + '/fixture.txt', 'utf8').replace(/\r\n/g, '\n')))
       done()
     })
+  })
+  it('can handle messages with empty bodies', function (done) {
+    this.slow(4000)
+    this.timeout(8000)
+    message2.nodeify(done)
   })
 })
 
