@@ -6,7 +6,7 @@
   "dependencies": {
     "request": "~2.21.0",
     "readable-stream": "~1.0.2",
-    "htmlparser2": "~3.1.3",
+    "htmlparser2": "~3.1.4",
     "ent": "https://github.com/esdiscuss/ent/archive/fixed.tar.gz"
   },
   "devDependencies": {
@@ -14,7 +14,8 @@
     "q": "*"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha test/index.js -R spec && node test/integration.js if-travis",
+    "test-integration": "mocha test/index.js -R spec && node test/integration.js"
   },
   "repository": {
     "type": "git",
