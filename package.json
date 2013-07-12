@@ -15,7 +15,7 @@
     "q": "*"
   },
   "scripts": {
-    "test": "mocha test/index.js -R spec && node test/integration.js 2",
+    "test": "mocha test/index.js -R spec && node test/integration.js 2 2000",
     "test-integration": "mocha test/index.js -R spec && node test/integration.js"
   },
   "repository": {
