@@ -1,11 +1,11 @@
 var assert = require('assert')
 var fs = require('fs')
 
-var Q = require('q')
+var Promise = require('promise')
 
 var pipermail = require('../')
 
-var index = Q.denodeify(pipermail.readIndex)('https://mail.mozilla.org/pipermail/es-discuss/')
+var index = pipermail.readIndex('https://mail.mozilla.org/pipermail/es-discuss/')
 describe('pipermail.readIndex', function () {
   it('parses the index to return an array of month urls', function (done) {
     this.slow(4000)
@@ -20,7 +20,7 @@ describe('pipermail.readIndex', function () {
   })
 })
 
-var month = Q.denodeify(pipermail.readMonth)('https://mail.mozilla.org/pipermail/es-discuss/2011-December')
+var month = pipermail.readMonth('https://mail.mozilla.org/pipermail/es-discuss/2011-December')
 describe('pipermail.readMonth', function () {
   it('parses a month listing page to return an array of message urls', function (done) {
     this.slow(4000)
@@ -35,8 +35,8 @@ describe('pipermail.readMonth', function () {
   })
 })
 
-var message = Q.denodeify(pipermail.readMessage)('https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html')
-var message2 = Q.denodeify(pipermail.readMessage)('https://mail.mozilla.org/pipermail/es-discuss/2008-October/007920.html')
+var message = pipermail.readMessage('https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html')
+var message2 = pipermail.readMessage('https://mail.mozilla.org/pipermail/es-discuss/2008-October/007920.html')
 describe('pipermail.readMessage', function () {
   it('parses a message to return an object representing the message', function (done) {
     this.slow(4000)
@@ -70,30 +70,27 @@ var messagePaths = []
 var messages = [{}, {}, {}, {}]
 fromStream.readIndex = function (path, callback) {
   indexPath = path
-  setTimeout(function () {
-    callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-June',
-                    'https://mail.mozilla.org/pipermail/es-discuss/2011-July'])
-  }, 100)
+  return Promise.from([
+    'https://mail.mozilla.org/pipermail/es-discuss/2011-June',
+    'https://mail.mozilla.org/pipermail/es-discuss/2011-July'])
 }
-fromStream.readMonth = function (path, callback) {
+fromStream.readMonth = function (path) {
   if (monthPathA) monthPathB = path
   else monthPathA = path
-  setTimeout(function () {
-    if (path === 'https://mail.mozilla.org/pipermail/es-discuss/2011-June') {
-      callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
-                      'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html'])
-    } else {
-      callback(null, ['https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
-                      'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'])
-    }
-  }, 100)
+  if (path === 'https://mail.mozilla.org/pipermail/es-discuss/2011-June') {
+    return Promise.from([
+      'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
+      'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html'])
+  } else {
+    return Promise.from([
+      'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
+      'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'])
+  }
 }
 var n = 0
-fromStream.readMessage = function (path, callback) {
+fromStream.readMessage = function (path) {
   messagePaths.push(path)
-  setTimeout(function () {
-    callback(null, messages[n++])
-  }, 100)
+  return Promise.from(messages[n++])
 }
 var streamError
 var stream = pipermail('https://mail.mozilla.org/pipermail/es-discuss/')
