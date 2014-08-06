@@ -70,7 +70,7 @@ var messagePaths = []
 var messages = [{}, {}, {}, {}]
 fromStream.readIndex = function (path, callback) {
   indexPath = path
-  return Promise.from([
+  return Promise.resolve([
     'https://mail.mozilla.org/pipermail/es-discuss/2011-June',
     'https://mail.mozilla.org/pipermail/es-discuss/2011-July'])
 }
@@ -78,11 +78,11 @@ fromStream.readMonth = function (path) {
   if (monthPathA) monthPathB = path
   else monthPathA = path
   if (path === 'https://mail.mozilla.org/pipermail/es-discuss/2011-June') {
-    return Promise.from([
+    return Promise.resolve([
       'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
       'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html'])
   } else {
-    return Promise.from([
+    return Promise.resolve([
       'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
       'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'])
   }
@@ -90,7 +90,7 @@ fromStream.readMonth = function (path) {
 var n = 0
 fromStream.readMessage = function (path) {
   messagePaths.push(path)
-  return Promise.from(messages[n++])
+  return Promise.resolve(messages[n++])
 }
 var streamError
 var stream = pipermail('https://mail.mozilla.org/pipermail/es-discuss/')
@@ -108,7 +108,7 @@ describe('pipermail', function () {
           'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012345.html',
           'https://mail.mozilla.org/pipermail/es-discuss/2011-June/012346.html',
           'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012347.html',
-           'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'][i])
+          'https://mail.mozilla.org/pipermail/es-discuss/2011-July/012348.html'][i])
         assert(message = messages[i++])
       })
       .on('end', function () {
