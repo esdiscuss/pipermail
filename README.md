@@ -3,7 +3,7 @@
   node.js utilities for reading pipermail archives such as es-discuss
 
 [![Build Status](https://travis-ci.org/esdiscuss/pipermail.png?branch=master)](https://travis-ci.org/esdiscuss/pipermail)
-[![Dependency Status](https://david-dm.org/esdiscuss/pipermail.png)](https://david-dm.org/esdiscuss/pipermail)
+[![Dependency Status](https://img.shields.io/david/esdiscuss/pipermail.svg)](https://david-dm.org/esdiscuss/pipermail)
 [![NPM version](https://img.shields.io/npm/v/pipermail.svg)](https://www.npmjs.com/package/pipermail)
 
 ## Basic Usage
