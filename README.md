@@ -45,6 +45,7 @@ I've shortened the bodies and renamed the e-mails but other than that it's the f
  - months: the maximum number of months to download.  If set, only the most recent n months will be downloaded.
  - parallel: the maximum number of messages to download in parallel, defaults to `10`
  - parallelMonths: the maximum number of month index pages to download in parallel, defaults to `2`
+ - archiveUrlRegex : the regex used to look for message archives on the index page of the pipermail `/\d\d\d\d\-[a-z]+\.txt(?:\.gz)?/gi`
 
 ## License
 
