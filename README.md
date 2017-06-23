@@ -1,5 +1,7 @@
 # pipermail
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/esdiscuss/pipermail.svg)](https://greenkeeper.io/)
+
   node.js utilities for reading pipermail archives such as es-discuss
 
 [![Build Status](https://img.shields.io/travis/esdiscuss/pipermail/master.svg)](https://travis-ci.org/esdiscuss/pipermail)
