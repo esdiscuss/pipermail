@@ -4,7 +4,7 @@
   "description": "node.js utilities for reading pipermail archives such as es-discuss",
   "main": "index.js",
   "dependencies": {
-    "barrage": "~1.1.0",
+    "barrage": "~2.0.1",
     "ent": "https://github.com/esdiscuss/ent/archive/fixed.tar.gz",
     "htmlparser2": "~3.9.2",
     "promise": "~8.0.0",
