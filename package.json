@@ -1,22 +1,48 @@
 {
   "name": "pipermail",
   "version": "4.0.0",
-  "description": "node.js utilities for reading pipermail archives such as es-discuss",
-  "main": "index.js",
+  "description":
+    "node.js utilities for reading pipermail archives such as es-discuss",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "dependencies": {
-    "barrage": "~2.0.1",
+    "@types/ent": "^2.2.1",
+    "@types/htmlparser2": "^3.7.31",
+    "@types/node": "^8.0.41",
+    "barrage": "^2.0.3",
     "ent": "https://github.com/esdiscuss/ent/archive/fixed.tar.gz",
     "htmlparser2": "~3.9.2",
     "promise": "~8.0.0",
     "then-request": "^4.0.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "q": "*"
+    "@types/jest": "*",
+    "husky": "*",
+    "jest": "*",
+    "lint-staged": "*",
+    "prettier": "*",
+    "ts-jest": "*",
+    "typescript": "*"
   },
   "scripts": {
-    "test": "mocha test/index.js -R spec && node test/integration.js 4 2000",
-    "test-integration": "mocha test/index.js -R spec && node test/integration.js"
+    "precommit": "lint-staged",
+    "prepublish": "npm run build",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "prettier:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "build": "tsc",
+    "test": "jest ./src --coverage",
+    "watch": "jest ./src --coverage --watch"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["prettier --write", "git add"]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": ["**/*.test.(ts|tsx|js)"]
   },
   "repository": {
     "type": "git",

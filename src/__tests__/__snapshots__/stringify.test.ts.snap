@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stiringify 1`] = `
+"{\\"foo\\":10}
+{\\"bar\\":42}
+{\\"baz\\":32}"
+`;

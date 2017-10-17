@@ -1,4 +1,24 @@
-Hi Ohad,
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`https://mail.mozilla.org/pipermail/es-discuss/2008-October/007920.html 1`] = `
+Object {
+  "body": "",
+  "header": Object {
+    "date": 2008-10-27T19:12:23.000Z,
+    "from": Object {
+      "email": "waldemar@google.com",
+      "name": "Waldemar Horwat",
+    },
+    "reply": "mailto:es-discuss%40mozilla.org?Subject=Re:%20Re%3A%20ES3.1%27s%20object%20model%20and%20const&In-Reply-To=%3C49061297.8060007%40google.com%3E",
+    "subject": "ES3.1's object model and const",
+  },
+  "url": "https://mail.mozilla.org/pipermail/es-discuss/2008-October/007920.html",
+}
+`;
+
+exports[`https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html 1`] = `
+Object {
+  "body": "Hi Ohad,
 
 Le 05/04/2013 12:00, Assulin, Ohad a écrit :
 >
@@ -12,7 +32,7 @@ gist [1] in markdown format and post the link to es-discuss. But use
 whatever is most convenient to you as long as it's easy to read for 
 everyone. Some proposals start in the wiki [2], but only members of TC39 
 have write access to it.
-As far as a "formal" process up to the spec, the proposal will be 
+As far as a \\"formal\\" process up to the spec, the proposal will be 
 discussed by TC39 at one or several meetings (one every 2 months) and 
 formal decisions of acceptance are decided there. In the vast majority 
 of cases, a lot of discussion happens before these meetings on 
@@ -39,4 +59,16 @@ David
 [3] http://wiki.ecmascript.org/doku.php?id=harmony:proposals
 -------------- next part --------------
 An HTML attachment was scrubbed...
-URL: <http://mail.mozilla.org/pipermail/es-discuss/attachments/20130405/6c8a49dc/attachment.html>
+URL: <http://mail.mozilla.org/pipermail/es-discuss/attachments/20130405/6c8a49dc/attachment.html>",
+  "header": Object {
+    "date": 2013-04-05T10:27:37.000Z,
+    "from": Object {
+      "email": "bruant.d@gmail.com",
+      "name": "David Bruant",
+    },
+    "reply": "mailto:es-discuss%40mozilla.org?Subject=Re:%20Re%3A%20how%20to%20submit%20a%20proposal%20for%20ECMAScript%207%3F&In-Reply-To=%3C515EA719.5000702%40gmail.com%3E",
+    "subject": "how to submit a proposal for ECMAScript 7?",
+  },
+  "url": "https://mail.mozilla.org/pipermail/es-discuss/2013-April/029615.html",
+}
+`;
