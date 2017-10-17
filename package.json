@@ -5,6 +5,7 @@
     "node.js utilities for reading pipermail archives such as es-discuss",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "files": ["lib/"],
   "dependencies": {
     "@types/ent": "^2.2.1",
     "@types/htmlparser2": "^3.7.31",
