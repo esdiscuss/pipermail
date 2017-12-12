@@ -21,7 +21,7 @@
     "husky": "*",
     "jest": "*",
     "lint-staged": "*",
-    "prettier": "*",
+    "prettier": ">=1.9.2",
     "ts-jest": "*",
     "typescript": "*"
   },
