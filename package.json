@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/jest": "*",
     "husky": "*",
-    "jest": "*",
+    "jest": ">=22.0.4",
     "lint-staged": "*",
     "prettier": "*",
     "ts-jest": "*",
