@@ -17,7 +17,7 @@
     "then-request": "^4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "*",
+    "@types/jest": ">=22.1.0",
     "husky": "*",
     "jest": "*",
     "lint-staged": "*",
