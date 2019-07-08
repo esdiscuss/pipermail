@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/ent": "^2.2.1",
     "@types/htmlparser2": "^3.7.31",
-    "@types/node": "^10.0.3",
+    "@types/node": "^12.6.0",
     "barrage": "^2.0.3",
     "ent": "https://github.com/esdiscuss/ent/archive/fixed.tar.gz",
     "htmlparser2": "~3.9.2",
