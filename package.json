@@ -22,7 +22,7 @@
     "jest": "*",
     "lint-staged": "*",
     "prettier": "*",
-    "ts-jest": "*",
+    "ts-jest": ">=25.4.0",
     "typescript": "*"
   },
   "scripts": {
